@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="col-lg-5">
+        <div class="ibox ">
+            <div class="ibox-title">
+                <h5>Evenement</h5>
+                <div class="ibox-tools">
+                    <a class="collapse-link">
+                        <i class="fa fa-chevron-up"></i>
+                    </a>
+                    <a class="close-link">
+                        <i class="fa fa-times"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="ibox-content">
+                {{ form_start(form) }}
+                {{ form_row(form.titre) }}
+                {{ form_row(form.description) }}
+
+                <div class="form-group" id="data_5">
+                    <label class="font-normal">Séléction l'intervalle</label>
+                    <div class="input-daterange input-group" id="datepicker">
+                        <input type="text" class="form-control-sm form-control" name="start" value="{{ evenement.datedebut }}"/>
+                        <span class="input-group-addon">jusqu'à</span>
+                        <input type="text" class="form-control-sm form-control" name="end" value="{{ evenement.datefin }}" />
+                    </div>
+                </div>
+
+
+                <div class="form-group ">
+                    <label class=" col-form-label">Choisir la salle</label>
+                    <div
+                    ><select class="form-control m-b" name="locall">
+                            <option>aucun</option>
+                            <option>01</option>
+                            <option>02</option>
+                            <option>03</option>
+                        </select>
+                    </div>
+                </div>
+                {{ form_row(form.nombrePlace) }}
+                {{ form_row(form.prix) }}
+                {{ form_row(form.image) }}
+                <!-- <div class="custom-file">
+                     <input id="logo" name="image"  type="file" class="custom-file-input">
+                     <label for="logo" class="custom-file-label">Choisir une image ...</label>
+                 </div>-->
+
+                <div class="hr-line-dashed"></div>
+                <div class="form-group row">
+                    <div class="col-sm-4 col-sm-offset-2">
+                        {{ form_row(form.Enregitrer) }}
+                        {{ form_widget(form.Annuler) }}
+                    </div>
+                </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

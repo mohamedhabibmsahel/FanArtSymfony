@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Employe index{% endblock %}
+
+{% block body %}
+    <h1>Employe index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Tache</th>
+                <th>Disponible</th>
+                <th>Age</th>
+                <th>Mobile</th>
+                <th>Salaire</th>
+                <th>NumCarte</th>
+                <th>IdSalle</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for employe in employes %}
+            <tr>
+                <td>{{ employe.id }}</td>
+                <td>{{ employe.nom }}</td>
+                <td>{{ employe.prenom }}</td>
+                <td>{{ employe.tache }}</td>
+                <td>{{ employe.disponible }}</td>
+                <td>{{ employe.age }}</td>
+                <td>{{ employe.mobile }}</td>
+                <td>{{ employe.salaire }}</td>
+                <td>{{ employe.numCarte }}</td>
+                <td>{{ employe.idSalle }}</td>
+                <td>
+                    <a href="{{ path('employe_show', {'id': employe.id}) }}">show</a>
+                    <a href="{{ path('employe_edit', {'id': employe.id}) }}">edit</a>
+                    <a href="{{ path('employe_payer', {'id': employe.id}) }}">payer</a>
+                    <a href="{{ path('employe_placer', {'id': employe.id}) }}">placer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="11">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('employe_new') }}">Create new</a>
+    <br/>
+{% endblock %}

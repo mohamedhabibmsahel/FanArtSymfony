@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox ">
+
+                    <div class="ibox-content">
+
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered table-hover dataTables-example" >
+                                <thead>
+                                <tr>
+                                    <th>IdProduit</th>
+                                    <th>Titre</th>
+                                    <th>Description</th>
+                                    <th>Image</th>
+                                    <th>IdUser</th>
+                                    <th>Prix</th>
+                                    <th>    </th>
+                                    <th>    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for produit in produits %}
+                                    <tr>
+                                        <td>{{ produit.idProduit }}</td>
+                                        <td>{{ produit.titre }}</td>
+                                        <td>{{ produit.description }}</td>
+                                        <td>{{ produit.image }}</td>
+                                        <td>{{ produit.idUser }}</td>
+                                        <td>{{ produit.prix }}</td>
+                                        <td> <button class="btn btn-warning " type="button"  onclick="location.href='{{ path('deleteproduit', {'id': produit.idProduit}) }}';"><i class="fa fa-warning"></i> <span class="bold">supprimer</span></button>
+                                        </td>
+                                        <td> <button class="btn btn-info  " type="button" onclick="location.href='{{ path('produit_edit', {'idProduit': produit.idProduit}) }} ';"><i class="fa fa-paste"></i> Editer</button>
+                                        </td>
+
+
+
+
+                                    </tr>
+                                {%  endfor %}
+
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <th>IdProduit</th>
+                                    <th>Titre</th>
+                                    <th>Description</th>
+                                    <th>Image</th>
+                                    <th>IdUser</th>
+                                    <th>Prix</th>
+                                    <th>    </th>
+                                </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+

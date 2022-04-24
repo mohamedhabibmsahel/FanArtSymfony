@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <style>
+        .center {
+            margin: auto;
+            width: 60%;
+
+            padding: 10px;
+        }
+    </style>
+    <div class="center">
+        <div class="ibox ">
+            <div class="ibox-title">
+                <h5>Reclamation</h5>
+                <div class="ibox-tools">
+                    <a class="collapse-link">
+                        <i class="fa fa-chevron-up"></i>
+                    </a>
+                    <a class="close-link">
+                        <i class="fa fa-times"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="ibox-content">
+                {{ form_start(form) }}
+                <h3>Produit</h3>
+                {{ form_widget(form.nomprod) }}
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <h3>Saisir votre réclamation</h3>
+                {{ form_widget(form.reclprod) }}
+                <br>
+                <br>
+                <br>
+                <br>
+                {{ form_widget(form.Enregistrer) }}
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+<section>
+    <div class="product"  >
+        <img
+                src="http://127.0.0.1/img/{{ event.image }} "
+                alt="The cover of Stubborn Attachments"
+        />
+        <div class="description">
+            <h3>{{ event.titre }}</h3>
+            <h5>{{ event.prix}}</h5>
+        </div>
+    </div>
+    <button type="button" class="btn btn-primary" id="checkout-button">Checkout</button>
+</section>
+{% endblock body %}
+{% block footer %}
+{% endblock footer %}
+{% block javascripts %}
+    <script src="https://polyfill.io/v3/polyfill.min.js?version=3.52.1&features=fetch"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script type="text/javascript">
+    // Create an instance of the Stripe object with your publishable API key
+    var stripe = Stripe("pk_test_51IYHfGBQ0LLhBexiG0fpKxnxgpqcN4cGoNqwv4OW1IH17R17aYnYjcBKC6iCtsvCou77qCHyTpuAs6Y55kX3PlGa00PvdvBVYg");
+    var checkoutButton = document.getElementById("checkout-button");
+
+    checkoutButton.addEventListener("click", function () {
+        fetch("/create-checkout-session", {
+            method: "POST",
+        })
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (session) {
+                return stripe.redirectToCheckout({ sessionId: session.id });
+            })
+            .then(function (result) {
+                // If redirectToCheckout fails due to a browser or network
+                // error, you should display the localized error message to your
+                // customer using error.message.
+                if (result.error) {
+                    alert(result.error.message);
+                }
+            })
+            .catch(function (error) {
+                console.error("Error:", error);
+            });
+    });
+</script>
+{% endblock javascripts %}

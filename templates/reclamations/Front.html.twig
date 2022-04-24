@@ -1,0 +1,20 @@
+{% extends 'front.html.twig' %}
+
+{% block title %}Hello ReclamationsController!{% endblock %}
+
+{% block container %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Hello Habib! ✅</h1>
+    Voulez acceder le
+    <ul>
+        <li><code><a href="{{ path('listrecp') }}">RECLAMATIONS PRODUCTS</a></code></li>
+        <li><code><a href="{{ path('recevent_index') }}">RECLAMATIONS EVENTS</a></code></li>
+        <li><code><a href="{{ path('reclamationsB') }}">BACK</a></code></li>
+    </ul>
+</div>
+{% endblock %}

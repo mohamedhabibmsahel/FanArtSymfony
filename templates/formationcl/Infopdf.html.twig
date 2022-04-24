@@ -1,0 +1,29 @@
+{% block body %}
+    <link rel="stylesheet" href="{{ asset ('bundles/mercuryseriesflashy/css/flashy.css') }}">
+
+    <div class="latest-products">
+        <div class="container">
+            <div class="row">
+
+                {% for f in forma %}
+                    <div class="col-md-4">
+                        <div class="product-item">
+                            <div class="down-content">
+                                <a href="{{ path('infopdf', {'idformation': f.idformation}) }}"><h2>{{f.nomformation}}</h2></a>
+
+                                <h2>Le domaine de la formation : {{f.domaine}}</h2>
+                                <h2>Prix d'inscription : {{f.prix}} dt</h2>
+                                <h3>* La date debut de la formation  : {{f.datedebut}}</h3>
+                                <h3>* La date fin de la formation  : {{f.datefin}}</h3>
+                                <h4>Description pour la formation: {{f.description}}</h4>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    </left>
+    </div>
+
+{%endblock%}

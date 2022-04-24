@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Employe{% endblock %}
+
+{% block body %}
+    <h1>Employe</h1>
+
+    <table class="table">
+        <tbody>
+        <tr>
+            <th>Id</th>
+            <td id="id_user">{{ employe.id }}</td>
+        </tr>
+        <tr>
+            <th>Nom</th>
+            <td>{{ employe.nom }}</td>
+        </tr>
+        <tr>
+            <th>Prenom</th>
+            <td>{{ employe.prenom }}</td>
+        </tr>
+        <tr>
+            <th>Tache</th>
+            <td>{{ employe.tache }}</td>
+        </tr>
+        <tr>
+            <th>Disponibilité</th>
+            <td>
+                {{ employe.disponible }}</td>
+        </tr>
+        <tr>
+            <th>Evenement</th>
+            <td>
+                <select>
+                    <option>rien</option>
+                    <option>Made in Tunisia</option>
+                    <option>Farda w lkat okhtha</option>
+                    <option>100% tounsi</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <th>Numero de Salle</th>
+            <td>{{ employe.idSalle }}</td>
+        </tr>
+
+        </tbody>
+    </table>
+
+
+    <a href="{{ path('employe_index') }}">back to list</a>
+    <br/>
+
+    <button type="submit" class="btn btn-primary" >Valider</button>
+
+
+
+{% endblock %}

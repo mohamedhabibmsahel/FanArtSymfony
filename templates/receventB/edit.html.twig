@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Recevent{% endblock %}
+
+{% block body %}
+    <h1>Edit Recevent</h1>
+
+    {{ include('receventB/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('recevent_indexB') }}">back to list</a>
+
+    {{ include('receventB/_delete_form.html.twig') }}
+{% endblock %}

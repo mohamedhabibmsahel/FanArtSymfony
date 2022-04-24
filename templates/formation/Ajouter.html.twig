@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+    Ajouter formatiom
+{% endblock %}
+{%block body%}
+    <section id="main-content">
+        <section class="wrapper">
+        <!-- BASIC FORM ELELEMNTS -->
+            <div class="row mt">
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    {{ form_start(form,{'attr': {'novalidate': 'novalidate'}}) }}
+                    <div class="form-group">
+                        <h3><i class="fa fa-angle-right"></i> Domaine </h3>
+                        {{ form_errors(form.domaine) }}
+                        {{ form_widget(form.domaine,{'attr': {'class': 'form-control' , 'placeholder' : 'Domaine'}}) }}
+                    </div>
+
+                    <div class="form-group">
+                        <h3><i class="fa fa-angle-right"></i> Nom formation</h3>
+                        {{ form_errors(form.nomformation) }}
+                        {{ form_widget(form.nomformation,{'attr': {'class': 'form-control' , 'placeholder' : 'Nom'}}) }}
+                    </div>
+                    <div class="form-group" id="data_5">
+                        <h3><i class="fa fa-angle-right"></i> Durée de la formation </h3>
+                        <div class="input-daterange input-group" id="datepicker">
+                            <input type="text" class="form-control-sm form-control" name="start" value=""/>
+                            <span class="input-group-addon">jusqu'à</span>
+                            <input type="text" class="form-control-sm form-control" name="end" value="" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h3><i class="fa fa-angle-right"></i> Description</h3>
+                        {{ form_errors(form.description) }}
+                        {{ form_widget(form.description,{'attr': {'class': 'form-control' , 'placeholder' : 'Description'}}) }}
+                    </div>
+                    <div class="form-group">
+                        <h3><i class="fa fa-angle-right"></i> Prix inscription</h3>
+                        <div class="input-group m-b">
+                            <span class="input-group-addon">$</span>
+                            {{ form_errors(form.prix) }}
+                            {{ form_widget(form.prix,{'attr': {'class': 'form-control' , 'placeholder' : 'prix'}}) }}
+                            <span class="input-group-addon">.000</span>
+                        </div>
+                    </div>
+                    <div class="btn btn-primary btn-sm">
+                        <div class="form-send">
+                            {{ form_widget(form.Enregistrer,{'attr': {'class': 'btn btn--radius btn--green ', 'placeholder' : 'Enregistrer'}}) }}
+                        </div>
+                    </div>
+                    <div class="btn btn-white btn-sm">
+                        <div class="form-send">
+                            {{ form_widget(form.Annuler,{'attr': {'class': 'btn btn--radius btn--green ', 'placeholder' : 'Annuler'}}) }}
+                        </div>
+                    </div>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </section>
+    </section>
+    <div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+    {% block path %}
+        <h2>Ajouter formation </h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="Listeformation.html.twig">Liste des formations</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a>Ajouter formation</a>
+            </li>
+        </ol>
+    {% endblock %}
+{%endblock%}

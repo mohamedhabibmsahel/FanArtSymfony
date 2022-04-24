@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reclamations Events{% endblock %}
+
+{% block body %}
+    <h1>Nouvelle Reclamation Events</h1>
+
+    {{ include('receventB/_form.html.twig') }}
+
+    <a href="{{ path('recevent_indexB') }}">back to list</a>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reclamations Events{% endblock %}
+
+{% block body %}
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Receid</th>
+                <td>{{ recevent.receid }}</td>
+            </tr>
+            <tr>
+                <th>Nomevent</th>
+                <td>{{ recevent.nomevent }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ recevent.email }}</td>
+            </tr>
+            <tr>
+                <th>Reclevent</th>
+                <td>{{ recevent.reclevent }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ recevent.status }}</td>
+            </tr>
+        </tbody>
+    </table>
+    {% if recevent.status == 'pending' %}
+        <a class="btn btn-primary" href="{{ path('recevent_seenB', {'receid': recevent.receid}) }}">Marqué comme LU</a>
+    {% else %}
+        <a class="btn btn-primary">SEEN</a>
+    {% endif %}
+
+    {{ include('receventB/_delete_form.html.twig') }}
+
+    <a href="{{ path('recevent_indexB') }}">Voir les reclamations</a>
+{% endblock %}

@@ -1,0 +1,5 @@
+swiftmailer:
+    url: '%env(MAILER_URL)%'
+    spool: { type: 'memory' }
+    disable_delivery: false
+    delivery_addresses: ['mhabybs@gmail.com']

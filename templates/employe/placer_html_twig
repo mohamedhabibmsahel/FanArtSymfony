@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Employe index{% endblock %}
+
+{% block body %}
+    <h1>Employe index</h1>
+    <div class="row">
+
+        <div class="col">
+            <div class="leftside">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>nom</th>
+                        <th>prenom</th>
+                        <th>Tache</th>
+                        <th>Disponible</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for employe in employes %}
+                        <tr>
+                            <td>{{ employe.nom }}</td>
+                            <td>{{ employe.prenom }}</td>
+                            <td>{{ employe.tache }}</td>
+                            <td>{{ employe.disponible }}</td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="11">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="rightside">
+                <p>nom : Gouider Seifeddine</p>
+                <br/>
+                <p>tache : Ingenieur</p>
+                <br/>
+                <p>disponibilité : Indispo</p>
+                <br/>
+                <p>Evenement : </p>
+                <select>
+                    <option>rien</option>
+                    <option>Made in Tunisia</option>
+                    <option>Farda w lkat okhtha</option>
+                    <option>100% tounsi</option>
+                </select>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <button class="btn btn-primary">valider</button>
+                <button class="btn btn-primary">annuler</button>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+{% endblock %}

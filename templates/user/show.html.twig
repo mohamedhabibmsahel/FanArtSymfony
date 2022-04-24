@@ -1,0 +1,69 @@
+{% extends 'front.html.twig' %}
+
+{% block title %}Profil{% endblock %}
+
+{% block container %}
+<body class="gray-bg">
+
+<div class="test-test">
+    <h1 align="center">Profil</h1>
+    <div class="widget-head-color-box navy-bg p-lg text-center">
+        <div class="m-b-md">
+            <h2 class="font-bold no-margins">
+                {{ app.user.nom |capitalize }}
+            </h2>
+        </div>
+        {% if app.user.mdp %}
+            <img class="rounded-circle circle-border m-b-mdsrc="src="http://127.0.0.1:8080/img/{{ app.user.photo }}" width="256" height="256"  alt="profile">
+
+        {% else %}
+            <img class="rounded-circle circle-border m-b-mdsrc="src="{{ app.user.photo }}" width="256" height="256"  alt="profile">
+        {% endif %}
+        <div>
+
+            <div class="widget-text-box">
+                <h4 class="media-heading"></h4>
+                <table class="table">
+                    <tbody>
+                    <tr>
+                        <th>Nom</th>
+                        <td>{{ app.user.nom }}</td>
+                    </tr>
+                    <tr>
+                        <th>Prenom</th>
+                        <td>{{ app.user.prenom }}</td>
+                    </tr>
+
+                    <tr>
+                        <th>Email</th>
+                        <td>{{ app.user.email }}</td>
+                    </tr>
+                    <tr>
+                        <th>Numtel</th>
+                        <td>{{ app.user.numtel }}</td>
+                    </tr>
+
+                    <tr>
+                        <th>Type</th>
+                        <td>{{ app.user.type }}</td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+
+            {% if app.user.mdp %}
+                <a class="btn btn-primary block full-width m-b" href="{{ path('user_edit', {'id': app.user.id}) }}">Modifier</a>
+
+            {% else %}
+                <a class="btn btn-primary block full-width m-b" href="{{ path('user_edit_Oauth', {'id': app.user.id}) }}">Modifier</a>
+            {% endif %}
+        </div>
+
+
+        {{ include('user/_delete_form.html.twig') }}
+    </div>
+</div>
+</body>
+{% endblock %}

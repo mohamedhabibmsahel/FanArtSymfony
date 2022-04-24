@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New User{% endblock %}
+
+{% block body %}
+<body class="gray-bg">
+<div class="middle-box text-center loginscreen   animated fadeInDown">
+
+
+        <h5>BrainStorm</h5>
+    <img src="{{ asset('http://localhost:8080/img/Brainstorm.png') }}"  width="128" alt="Image">
+
+    <h4>Créez un nouveau compte</h4>
+
+    {{ include('user/_form.html.twig') }}
+
+    <p class="text-muted text-center"><small>Vous avez déja un compte ?</small></p>
+    <a class="btn btn-primary block full-width m-b" href="{{ path('security_login') }}">Se connecter</a>
+</div>
+</body>
+{% endblock %}

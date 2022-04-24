@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+    Modifier salle
+{% endblock %}
+{% block body %}
+    <section id="main-content">
+        <section class="wrapper">
+            <!-- BASIC FORM ELELEMNTS -->
+            <div class="row mt">
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    {{ form_start(s,{'attr': {'novalidate': 'novalidate'}}) }}
+
+                    <div class="form-group">
+                        <h3><i class="fa fa-angle-right"></i> Numéro salle </h3>
+                        {{ form_errors(s.numsalle) }}
+                        {{ form_widget(s.numsalle,{'attr': {'class': 'form-control' , 'placeholder' : 'Numéro salle'}}) }}
+                    </div>
+
+                    <div class="form-group">
+                        <h3><i class="fa fa-angle-right"></i> Nombre de places</h3>
+                        {{ form_errors(s.nbreplace) }}
+                        {{ form_widget(s.nbreplace,{'attr': {'class': 'form-control' , 'placeholder' : 'Nombre de places'}}) }}
+                    </div>
+
+                    <div class="form-group">
+                        <h3><i class="fa fa-angle-right"></i> Description</h3>
+                        {{ form_errors(s.description) }}
+                        {{ form_widget(s.description,{'attr': {'class': 'form-control' , 'placeholder' : 'Description'}}) }}
+                    </div>
+
+                    <div class="form-group">
+                        <h3><i class="fa fa-angle-right"></i> Choisir une image </h3>
+                        {{ form_errors(s.image) }}
+                        {{ form_widget(s.image,{'attr': {'class': 'input--style-1' , 'placeholder' : 'image'}}) }}
+                    </div>
+
+                    <div class="btn btn-primary btn-sm">
+                        <div class="form-send">
+                            {{ form_widget(s.Modifier,{'attr': {'class': 'btn btn--radius btn--green ', 'placeholder' : 'Modifier'}}) }}
+                        </div>
+                    </div>
+
+                    <div class="btn btn-white btn-sm">
+                        <div class="form-send">
+                            {{ form_widget(s.Annuler,{'attr': {'class': 'btn btn--radius btn--green ', 'placeholder' : 'Annuler'}}) }}
+                        </div>
+                    </div>
+
+                    {{ form_end(s) }}
+                </div>
+            </div>
+        </section>
+    </section>
+    <div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+    {% block path %}
+        <h2>Ajouter salle </h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="Listesalle.html.twig">Liste des salles</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a>Ajouter salle</a>
+            </li>
+        </ol>
+    {% endblock %}
+{%endblock%}

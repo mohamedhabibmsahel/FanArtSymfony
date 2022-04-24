@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from webapplayers.com/inspinia_admin-v2.9.3/landing.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 15 Nov 2020 15:58:37 GMT -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+
+    <title>Page d'acceuil </title>
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{ asset('/theme/css/bootstrap.min.css') }}" rel="stylesheet">
+
+
+    <link href="{{ asset('/theme/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('/theme/css/plugins/fullcalendar/fullcalendar.css') }}" rel="stylesheet">
+
+    <link href="{{ asset('/theme/css/plugins/fullcalendar/fullcalendar.print.css') }}" rel='stylesheet' media='print'>
+
+    <!-- Animation CSS -->
+    <link href="{{ asset('/theme/css/animate.css') }}" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="{{ asset('/theme/css/style.css') }}" rel="stylesheet">
+</head>
+<body id="page-top" class="landing-page no-skin-config">
+<div class="navbar-wrapper">
+    <nav class="navbar navbar-default navbar-fixed-top navbar-expand-md" role="navigation">
+        <div class="container">
+
+            <a class="navbar-brand" href="#">Partie utilisateur</a>
+
+            <div class="navbar-header page-scroll">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
+                    <i class="fa fa-bars"></i>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse justify-content-end" id="navbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a class="nav-link page-scroll" href="#page-top">Accueil</a></li>
+
+                    <li><a class="nav-link page-scroll" href="#contact">Contact</a></li>
+
+                    <li><a class="nav-link page-scroll" href="#team">Équipe</a></li>
+                    <li><a class="nav-link page-scroll" href="#qui">Qui ? </a></li>
+                    <li><a class="nav-link page-scroll" href="#contact">Connexion</a></li>
+
+
+                    {% if app.user %}
+                        <li><a class="nav-link page-scroll" href="{{ path('user_show', {'id': app.user.id}) }}">Profil Mr {{ app.user.nom }}</a>  </li>
+                        <li><a class="nav-link page-scroll" href="{{path('app_logout')}}">Deconnexion</a></li>
+
+                    {% else %}
+                        <li><a class="nav-link page-scroll" href="{{path('app_login')}}">Connexion</a></li>
+                    {% endif %}
+
+                    <li><a class="nav-link page-scroll" href="#contact">Connexion</a></li>
+                    <li><a class="nav-link page-scroll" href="{{path('listpanierelem')}}"><img src="http://127.0.0.1/img/Panier.jpg" width="20" height="20" alt=""></a></li>
+
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+<div id="inSlider" class="carousel slide" data-ride="carousel" >
+    <ol class="carousel-indicators">
+        <li data-target="#inSlider" data-slide-to="0" class="active"></li>
+        <li data-target="#inSlider" data-slide-to="1"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+        <div class="carousel-item active">
+            <div class="container">
+                <div class="carousel-caption">
+
+                    <h1>Nous sommes<br/>
+                        Brain Storm <br/>
+                    </h1>
+                    <p>
+                        <a class="btn btn-lg btn-primary" href="#" role="button">Lire la suite</a>
+
+                    </p>
+                </div>
+                <!--  <div class="carousel-image wow zoomIn">
+                      <img src="img/landing/laptop.png" alt="laptop"/>
+                  </div>-->
+
+            </div>
+            <!-- Set background for slide in css -->
+            <div class="header-back one"></div>
+
+        </div>
+    </div>
+    <a class="carousel-control-prev" href="#inSlider" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#inSlider" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+
+{% block container %}
+{% endblock %}
+
+<section id="qui" class="gray-section team">
+<div class="row">
+    <div class="col-lg-12 text-center">
+        <div class="navy-line"></div>
+        <h1>Brain Strom</h1>
+        <p> Equipe de développeur </p>
+    </div>
+</div>
+<div class="row features-block">
+    <div class="col-lg-6 features-text wow fadeInLeft">
+
+        <h2>Nous sommes qui ? </h2>
+        <p> Nous sommes ..</p>
+    </div>
+    <div class="col-lg-6 text-right wow fadeInRight">
+        <img src="/theme/img/landing/image1.png" alt="dashboard" class="img-fluid float-right">
+    </div>
+</div>
+</section>
+
+<section id="team" class="gray-section team">
+    <div class="container">
+        <div class="row m-b-lg">
+            <div class="col-lg-12 text-center">
+                <div class="navy-line"></div>
+                <h1>Notre équipe </h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 wow fadeInLeft">
+                <div class="team-member">
+                    <img src="/theme/img/landing/sameh.jpg" class="img-fluid rounded-circle img-small" alt="">
+                    <h4><span class="navy">Sameh  </span> Ben Romdhane</h4>
+                    <p>
+                        Etudiante en Esprit </p>
+                    <ul class="list-inline social-icon">
+                        <li class="list-inline-item"><a href="https://www.facebook.com/sameh.bromdhane"><i class="fa fa-twitter"></i></a>
+                        </li>
+                        <li class="list-inline-item"><a href="#"><i class="fa fa-facebook"></i></a>
+                        </li>
+                        <li class="list-inline-item"><a href="#"><i class="fa fa-linkedin"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <div class="col-sm-4">
+                <div class="team-member wow zoomIn">
+                    <img src="/theme/img/landing/soula.jpg" class="img-fluid rounded-circle img-small " alt="">
+                    <h4><span class="navy">Mohamed Habib</span> Soula</h4>
+
+                    Etudiant en Esprit
+                    <ul class="list-inline social-icon">
+                        <li class="list-inline-item"><a href="#"><i class="fa fa-twitter"></i></a>
+                        </li>
+                        <li class="list-inline-item"><a href="#"><i class="fa fa-facebook"></i></a>
+                        </li>
+                        <li class="list-inline-item"><a href="#"><i class="fa fa-linkedin"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-sm-4 wow fadeInRight">
+                <div class="team-member">
+                    <img src="/theme/img/landing/monam.jpg" class="img-fluid rounded-circle img-small" alt="">
+                    <h4><span class="navy">Moonam</span> Ben Gouta</h4>
+
+                    Etudiant en Esprit
+                    <ul class="list-inline social-icon">
+                        <li class="list-inline-item"><a href="#"><i class="fa fa-twitter"></i></a>
+                        </li>
+                        <li class="list-inline-item"><a href="#"><i class="fa fa-facebook"></i></a>
+                        </li>
+                        <li class="list-inline-item"><a href="#"><i class="fa fa-linkedin"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-sm-4 wow fadeInLeft">
+                <div class="team-member">
+                    <img src="/theme/img/landing/seif.jpg" class="img-fluid rounded-circle img-small" alt="">
+                    <h4><span class="navy">Seif Eddine  </span> Gouider</h4>
+
+                    Etudiant en Esprit
+                    <ul class="list-inline social-icon">
+                        <li class="list-inline-item"><a href="https://www.facebook.com/sameh.bromdhane"><i class="fa fa-twitter"></i></a>
+                        </li>
+                        <li class="list-inline-item"><a href="#"><i class="fa fa-facebook"></i></a>
+                        </li>
+                        <li class="list-inline-item"><a href="#"><i class="fa fa-linkedin"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <div class="team-member wow zoomIn">
+                    <img src="/theme/img/landing/msahel.jpg" class="img-fluid rounded-circle img-small" alt="">
+                    <h4><span class="navy">Mohamed Hbib</span> M'sahel</h4>
+
+                    Etudiant en Esprit
+                    <ul class="list-inline social-icon">
+                        <li class="list-inline-item"><a href="#"><i class="fa fa-twitter"></i></a>
+                        </li>
+                        <li class="list-inline-item"><a href="#"><i class="fa fa-facebook"></i></a>
+                        </li>
+                        <li class="list-inline-item"><a href="#"><i class="fa fa-linkedin"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-sm-4 wow fadeInRight">
+                <div class="team-member">
+                    <img src="/theme/img/landing/houcem.jpg" class="img-fluid rounded-circle img-small" alt="">
+                    <h4><span class="navy">Houcem </span> Swissi</h4>
+
+                    Etudiant en Esprit
+                    <ul class="list-inline social-icon">
+                        <li class="list-inline-item"><a href="#"><i class="fa fa-twitter"></i></a>
+                        </li>
+                        <li class="list-inline-item"><a href="#"><i class="fa fa-facebook"></i></a>
+                        </li>
+                        <li class="list-inline-item"><a href="#"><i class="fa fa-linkedin"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <div class="col-sm-4">
+                <div class="team-member wow zoomIn">
+                    <img src="/theme/img/landing/melek.jpg" class="img-fluid rounded-circle img-small" alt="">
+                    <h4><span class="navy">Mohamed Melek </span> Chtourou </h4>
+                    Etudiant en Esprit
+                    <ul class="list-inline social-icon">
+                        <li class="list-inline-item"><a href="#"><i class="fa fa-twitter"></i></a>
+                        </li>
+                        <li class="list-inline-item"><a href="#"><i class="fa fa-facebook"></i></a>
+                        </li>
+                        <li class="list-inline-item"><a href="#"><i class="fa fa-linkedin"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-lg-12 text-center m-t-lg m-b-lg">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+<section id="contact" class="gray-section contact">
+    <div class="container">
+        <div class="row m-b-lg">
+            <div class="col-lg-12 text-center">
+                <div class="navy-line"></div>
+
+                <h1>Nous contacter</h1>
+                <p>
+                    Mais jusqu'à ce qu'il en vaille la peine. Même salade de porte malesuada avec une performance douce.</p>
+
+            </div>
+        </div>
+        <div class="row m-b-lg justify-content-center">
+            <div class="col-lg-3 ">
+                <address>
+
+                    <strong><span class="navy">Nom de la compagnie, Inc.</span></strong><br/>
+                    Brain Storm<br/>
+                    Esprit </br>
+                    <abbr title="Phone">Tél:</abbr> (216) 20202021
+                </address>
+            </div>
+            <div class="col-lg-4">
+
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 text-center">
+
+                <a href="mailto:test@email.com" class="btn btn-primary">Envoyez-nous un mail</a>
+                <p class="m-t-sm">
+                    Ou suivez-nous sur la plateforme sociale
+
+                </p>
+                <ul class="list-inline social-icon">
+                    <li class="list-inline-item"><a href="#"><i class="fa fa-twitter"></i></a>
+                    </li>
+                    <li class="list-inline-item"><a href="#"><i class="fa fa-facebook"></i></a>
+                    </li>
+                    <li class="list-inline-item"><a href="#"><i class="fa fa-linkedin"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 text-center m-t-lg m-b-lg">
+
+                <p><strong>&copy; 2021 Brain Storm</strong><br/> remises améliorées. Ou, ces symptômes, au milieu de l'épreuve de la vérité, qu'il n'était pas un homme de rencontrer, tout le corps de celle-ci, d'autres comme ce qui se passe..</p>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Mainly scripts -->
+<script src="{{ asset('/theme/js/jquery-3.1.1.min.js') }}"></script>
+<script src="{{ asset('/theme/js/popper.min.js') }}"></script>
+<script src="{{ asset('/theme/js/bootstrap.js') }}"></script>
+<script src="{{ asset('/theme/js/plugins/metisMenu/jquery.metisMenu.js') }}"></script>
+<script src="{{ asset('/theme/js/plugins/slimscroll/jquery.slimscroll.min.js') }}"></script>
+
+
+
+<!-- Custom and plugin javascript -->
+<script src="{{ asset('/theme/js/inspinia.js') }}"></script>
+<script src="{{ asset('/theme/js/plugins/pace/pace.min.js') }}"></script>
+<script src="{{ asset('/theme/js/plugins/wow/wow.min.js') }}"></script>
+<!-- Mainly scripts -->
+<script src="{{ asset('js/plugins/fullcalendar/moment.min.js') }}"></script>
+
+<!-- Full Calendar -->
+<script src="{{ asset('js/plugins/fullcalendar/fullcalendar.min.js') }}"></script>
+
+
+<script>
+
+    $(document).ready(function () {
+
+        $('body').scrollspy({
+            target: '#navbar',
+            offset: 80
+        });
+
+        // Page scrolling feature
+        $('a.page-scroll').bind('click', function(event) {
+            var link = $(this);
+            $('html, body').stop().animate({
+                scrollTop: $(link.attr('href')).offset().top - 50
+            }, 500);
+            event.preventDefault();
+            $("#navbar").collapse('hide');
+        });
+    });
+
+    var cbpAnimatedHeader = (function() {
+        var docElem = document.documentElement,
+            header = document.querySelector( '.navbar-default' ),
+            didScroll = false,
+            changeHeaderOn = 200;
+        function init() {
+            window.addEventListener( 'scroll', function( event ) {
+                if( !didScroll ) {
+                    didScroll = true;
+                    setTimeout( scrollPage, 250 );
+                }
+            }, false );
+        }
+        function scrollPage() {
+            var sy = scrollY();
+            if ( sy >= changeHeaderOn ) {
+                $(header).addClass('navbar-scroll')
+            }
+            else {
+                $(header).removeClass('navbar-scroll')
+            }
+            didScroll = false;
+        }
+        function scrollY() {
+            return window.pageYOffset || docElem.scrollTop;
+        }
+        init();
+        return null;
+
+    })();
+
+    // Activate WOW.js plugin for animation on scrol
+    new WOW().init();
+
+</script>
+
+
+<!-- Page-Level Scripts -->
+<script>
+    $(document).ready(function () {
+        $('.dataTables-example').DataTable({
+            pageLength: 25,
+            responsive: true,
+            dom: '<"html5buttons"B>lTfgitp',
+            buttons: [
+                {extend: 'copy'},
+                {extend: 'csv'},
+                {extend: 'excel', title: 'ExampleFile'},
+                {extend: 'pdf', title: 'ExampleFile'},
+
+                {
+                    extend: 'print',
+                    customize: function (win) {
+                        $(win.document.body).addClass('white-bg');
+                        $(win.document.body).css('font-size', '10px');
+
+                        $(win.document.body).find('table')
+                            .addClass('compact')
+                            .css('font-size', 'inherit');
+                    }
+                }
+            ]
+
+        });
+
+    });
+
+</script>
+
+</body>
+
+<!-- Mirrored from webapplayers.com/inspinia_admin-v2.9.3/landing.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 15 Nov 2020 15:59:01 GMT -->
+</html>

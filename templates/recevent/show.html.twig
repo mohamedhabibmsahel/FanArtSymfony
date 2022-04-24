@@ -1,0 +1,35 @@
+{% extends 'front.html.twig' %}
+
+{% block title %}Reclamations Events{% endblock %}
+
+{% block container %}
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Receid</th>
+                <td>{{ recevent.receid }}</td>
+            </tr>
+            <tr>
+                <th>Nomevent</th>
+                <td>{{ recevent.nomevent }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ recevent.email }}</td>
+            </tr>
+            <tr>
+                <th>Reclevent</th>
+                <td>{{ recevent.reclevent }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ recevent.status }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    {{ include('recevent/_delete_form.html.twig') }}
+
+    <a href="{{ path('recevent_index') }}">Voir les reclamations</a>
+{% endblock %}

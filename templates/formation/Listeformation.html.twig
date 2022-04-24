@@ -1,0 +1,121 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+    Liste des formations
+{% endblock %}
+{% block body %}
+    <div>
+        <button class="btn btn-primary btn-block m" type="button" onclick="location.href='{{ path('ajouter') }} ';"><i class="fa fa-paste"></i> Ajouter formation </button>
+    </div>
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox ">
+                    <div class="ibox-content">
+                        <div class="table-responsive">
+                            <form method="post" action="{{ path('searchName') }}">
+                                <h3><i class="fa fa-angle-right"></i> Chercher par nom formation</h3>
+                                <div class="input-group">
+                                    <input class="form-control form-control-sm" type="text" name="find">
+                                    <input class ="btn btn-primary btn-sm" type="submit" value="Chercher ! ">
+                                </div>
+                            </form>
+
+                            <h3><i class="fa fa-angle-right"></i> Trier par le domaine</h3>
+                            <div>
+                                <form class="fa fa-level-down"  action="{{ path('formationOrderASC') }}">
+                                    <a href="/formation/formationOrderASC">Ordre ascendant</a>
+                            </form>
+                            </div>
+
+                            <form class="fa fa-level-up" action="{{ path('formationOrderDESC') }}">
+                                <a href="/formation/formationOrderDESC">Ordre descendant</a>
+                            </form>
+                            <div class="btn btn-grey btn-block m ">
+                                <a class="btn btn-success" href="{{path('formationpdf') }}">  Voir sous la forme de PDF </a>
+                            </div>
+                            <table id="table" class="table table-striped" >
+                                <thead>
+                                <tr>
+                                    <th> Domaine </th>
+                                    <th> Nom formation </th>
+                                    <th> Date debut </th>
+                                    <th> Date fin </th>
+                                    <th> Description </th>
+                                    <th> Prix inscription </th>
+                                    <th> Modifier </th>
+                                    <th> Supprimer </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr {% for f in formation %}>
+                                    <td> {{ f.domaine }}</td>
+                                    <td> {{ f.nomformation }}</td>
+                                    <td> {{ f.datedebut }}</td>
+                                    <td> {{ f.datefin }}</td>
+                                    <td> {{ f.description }}</td>
+                                    <td> {{ f.prix }} dt </td>
+                                    <td> <button class="btn btn-info  " type="button" onclick="location.href='{{ path('modifier',{'idformation':f.idformation}) }} ';"><i class="fa fa-paste"></i> Modifier </button></td>
+                                    <td> <button class="btn btn-warning " type="button"  onclick="location.href='{{ path('supprimer',{'idformation':f.idformation}) }}';"><i class="fa fa-warning"></i> <span class="bold">Supprimer</span></button></td>
+                                    </tr {% endfor %}>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+{% block javascripts %}
+
+    <script src="{{ asset('/theme/js/jquery-3.1.1.min.js') }}"></script>
+    <script src="{{ asset('/theme/js/popper.min.js') }}"></script>
+    <script src="{{ asset('/theme/js/bootstrap.js') }}"></script>
+    <script src="{{ asset('/theme/js/plugins/metisMenu/jquery.metisMenu.js') }}"></script>
+    <script src="{{ asset('/theme/js/plugins/slimscroll/jquery.slimscroll.min.js') }}"></script>
+    <script src="{{ asset('/theme/js/plugins/dataTables/datatables.min.js') }}"></script>
+    <script src="{{ asset('/theme/js/plugins/dataTables/dataTables.bootstrap4.min.js') }}"></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="{{ asset('/theme/js/inspinia.js') }}"></script>
+    <script src="{{ asset('/theme/js/plugins/pace/pace.min.js') }}"></script>
+
+    <!-- Page-Level Scripts -->
+    <script>
+        $(document).ready(function(){
+            $('.dataTables-example').DataTable({
+                pageLength: 25,
+                responsive: true,
+                dom: '<"html5buttons"B>lTfgitp',
+                buttons: [
+                    { extend: 'copy'},
+                    {extend: 'csv'},
+                    {extend: 'excel', title: 'ExampleFile'},
+                    {extend: 'pdf', title: 'ExampleFile'},
+                    {extend: 'print',
+                        customize: function (win){
+                            $(win.document.body).addClass('white-bg');
+                            $(win.document.body).css('font-size', '10px');
+
+                            $(win.document.body).find('table')
+                                .addClass('compact')
+                                .css('font-size', 'inherit');
+                        }
+                    }
+                ]
+
+            });
+        });
+    </script>
+
+    {% block path %}
+        <h1>Liste des formations </h1>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="Listformationcl.html.twig">Liste des formations</a>
+            </li>
+        </ol>
+    {% endblock %}
+
+{% endblock %}

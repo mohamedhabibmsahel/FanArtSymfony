@@ -1,0 +1,24 @@
+{% extends 'front.html.twig' %}
+
+{% block title %}Edit User{% endblock %}
+
+{% block container %}
+
+<body class="gray-bg">
+
+<div class="test-test">
+    <h1 align="center">Profil</h1>
+    <div class="widget-head-color-box navy-bg p-lg text-center">
+        <div class="m-b-md">
+            <h2 class="font-bold no-margins"> </h2>
+                <h1>Modifier profil</h1>
+               {{ include('user/_form.html.twig', {'button_label': 'Modifier Profil'}) }}
+
+                <a class="btn btn-primary block full-width m-b bg-info" href="{{ path('app_forgot_password_request') }}">Modifier Mot de passe</a>
+            {{ include('user/_delete_form.html.twig') }}
+        </div>
+    </div>
+</div>
+</body>
+
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reclamations Produits{% endblock %}
+
+{% block body %}
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>ID reclamation</th>
+                <td>{{ recprod.recpid }}</td>
+            </tr>
+            <tr>
+                <th>Produit</th>
+                <td>{{ recprod.nomprod }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ recprod.email }}</td>
+            </tr>
+            <tr>
+                <th>Reclamation</th>
+                <td>{{ recprod.reclprod }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ recprod.status }}</td>
+            </tr>
+        </tbody>
+    </table>
+    {% if recprod.status == 'pending' %}
+        <a class="btn btn-primary" href="{{ path('recprod_seenB', {'recprod': recprod.recpid}) }}">Marqué comme LU</a>
+    {% else %}
+        <a class="btn btn-primary">SEEN</a>
+    {% endif %}
+    <button class="btn btn-danger " type="button"  onclick="location.href='{{ path('supprecpB',{'id':recprod.recpid}) }}';"><i class="fa fa-warning"></i> <span class="bold">supprimer</span></button>
+
+
+    <a href="{{ path('listrecpB') }}">Voir les reclamations</a>
+{% endblock %}

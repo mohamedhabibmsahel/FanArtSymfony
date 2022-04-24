@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {# Run `composer require symfony/webpack-encore-bundle`
+           and uncomment the following Encore helpers to start using Symfony UX #}
+    {% block stylesheets %}
+
+        {#{{ encore_entry_link_tags('app') }}#}
+        <link href="{{ asset('/theme/css/bootstrap.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('/theme/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
+
+        <link href="{{ asset('/theme/css/plugins/dataTables/datatables.min.css') }}" rel="stylesheet">
+        <!-- FooTable -->
+        <link href="{{ asset('/theme/css/plugins/footable/footable.core.css') }}" rel="stylesheet">
+
+        <link href="{{ asset('/theme/css/animate.css') }}" rel="stylesheet">
+        <link href="{{ asset('/theme/css/style.css') }}" rel="stylesheet">
+        <link href="{{ asset('/theme/css/plugins/datapicker/datepicker3.css') }}" rel="stylesheet">
+
+    {% endblock %}
+
+
+</head>
+
+<body>
+{% block body %}
+{% endblock %}
+{% block javascripts %}
+    {#{{ encore_entry_script_tags('app') }}#}
+
+    <script src="{{ asset('/theme/js/jquery-3.1.1.min.js') }}"></script>
+    <script src="{{ asset('/theme/js/popper.min.js') }}"></script>
+    <script src="{{ asset('/theme/js/bootstrap.js') }}"></script>
+    <script src="{{ asset('/theme/js/plugins/metisMenu/jquery.metisMenu.js') }}"></script>
+    <script src="{{ asset('/theme/js/plugins/slimscroll/jquery.slimscroll.min.js') }}"></script>
+
+    <script src="{{ asset('/theme/js/plugins/dataTables/datatables.min.js') }}"></script>
+    <script src="{{ asset('/theme/js/plugins/dataTables/dataTables.bootstrap4.min.js') }}"></script>
+    <!-- Data picker -->
+    <script src="{{ asset('js/plugins/datapicker/bootstrap-datepicker.js') }}"></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="{{ asset('/theme/js/inspinia.js') }}"></script>
+    <script src="{{ asset('/theme/js/plugins/pace/pace.min.js') }}"></script>
+    <!-- Custom and plugin javascript -->
+    <script src="{{ asset('/theme/js/inspinia.js') }}"></script>
+    <script src="{{ asset('/theme/js/plugins/pace/pace.min.js') }}"></script>
+    <!-- FooTable -->
+    <script src="{{ asset('/theme/js/plugins/footable/footable.all.min.js') }}"></script>
+    <!-- Data picker -->
+    <script src="{{ asset('/theme/js/plugins/datapicker/bootstrap-datepicker.js') }}"></script>
+
+    <!-- Page-Level Scripts -->
+    <script> function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#blah').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#imgInp").change(function(){
+        readURL(this);
+    });</script>
+    <script>
+        $(document).ready(function(){
+            $('.dataTables-example').DataTable({
+                pageLength: 25,
+                responsive: true,
+                dom: '<"html5buttons"B>lTfgitp',
+                buttons: [
+                    { extend: 'copy'},
+                    {extend: 'csv'},
+                    {extend: 'excel', title: 'ExampleFile'},
+                    {extend: 'pdf', title: 'ExampleFile'},
+
+                    {extend: 'print',
+                        customize: function (win){
+                            $(win.document.body).addClass('white-bg');
+                            $(win.document.body).css('font-size', '10px');
+
+                            $(win.document.body).find('table')
+                                .addClass('compact')
+                                .css('font-size', 'inherit');
+                        }
+                    }
+                ]
+
+            });
+
+        });
+
+    </script>
+    <script>
+        $(document).ready(function() {
+
+            $('.footable').footable();
+
+            $('#datedebut').datepicker({
+                todayBtn: "linked",
+                keyboardNavigation: false,
+                forceParse: false,
+                calendarWeeks: true,
+                autoclose: true
+            });
+
+            $('#datefin').datepicker({
+                todayBtn: "linked",
+                keyboardNavigation: false,
+                forceParse: false,
+                calendarWeeks: true,
+                autoclose: true
+            });
+
+        });
+
+    </script>
+    <script>
+        $('.custom-file-input').on('change', function() {
+            let fileName = $(this).val().split('\\').pop();
+            $(this).next('.custom-file-label').addClass("selected").html(fileName);
+        });
+        $('#data_5 .input-daterange').datepicker({
+            keyboardNavigation: false,
+            forceParse: false,
+            autoclose: true
+        });
+    </script>
+
+{% endblock %}
+</body>
+</html>

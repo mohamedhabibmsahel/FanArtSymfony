@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User index{% endblock %}
+{% block path %}
+    <h2>List des profils</h2>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="#">Acceuil</a>
+        </li>
+        <li class="breadcrumb-item">
+            <a> <strong>List des evenements</strong></a>
+        </li>
+
+    </ol>
+{% endblock %}
+{% block body %}
+    <body class="gray-bg">
+
+<div class="col-lg-12">
+    <div></div>
+    <div class="ibox ">
+        <div class="ibox-title">
+    <table class="table">
+
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Mdp</th>
+                <th>Email</th>
+                <th>Numtel</th>
+                <th>Photo</th>
+                <th>Type</th>
+
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.nom }}</td>
+                <td>{{ user.prenom }}</td>
+                <td>{{ user.mdp }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.numtel }}</td>
+                <td><img class="rounded-circle circle-border m-b-mdsrc="src="http://127.0.0.1:8080/img/{{ user.photo }}"  height="128" width="128" alt="profile"></td>
+                <td>{{ user.type }}</td>
+
+                <td>
+                    <a class="btn btn-primary block full-width m-b"href="{{ path('user_show', {'id': user.id}) }}">Afficher</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+        </div>
+    </div>
+</div>
+
+    </body>
+{% endblock %}

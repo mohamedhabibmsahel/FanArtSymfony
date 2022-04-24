@@ -1,0 +1,41 @@
+{% extends 'back.html.twig' %}
+{% block title %}
+    Liste des formations
+{% endblock %}
+{% block body %}
+    <div class="row">
+        {% for f in forma %}
+        <div class="col-md-3">
+            <div class="ibox">
+                <div class="ibox-content product-box">
+                    <div class="product-imitation">
+                        <img alt="image"  src="/theme/img/gallery/form3.png">
+                    </div>
+
+                    <div class="product-desc">
+                        <span class="product-price">
+                            <strong href="{{ path('formationdetail', {'idformation': f.idformation}) }}"><h4>{{f.prix}} dt </h4></strong>
+                        </span>
+
+                        <small class="text-muted">
+                            <strong href="{{ path('formationdetail', {'idformation': f.idformation}) }}"><h4>{{f.domaine}}</h4></strong>
+                        </small>
+
+                        <a href="#" class="product-name">
+                            <strong href="{{ path('formationdetail', {'idformation': f.idformation}) }}"><h4>{{f.nomformation}}</h4></strong>
+                        </a>
+                        <div class="small m-t-xs">
+                            <strong href="{{ path('formationdetail', {'idformation': f.idformation}) }}"><h4>{{f.description}}</h4></strong>
+                        </div>
+
+                        <div class="m-t text-righ">
+                            <strong href="{{ path('infopdf', {'idformation': f.idformation}) }}" class="btn btn-xs btn-outline btn-primary">
+                                PDF <i class="fa fa-long-arrow-right"></i> </strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+            </div>
+{% endblock %}

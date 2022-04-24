@@ -1,0 +1,206 @@
+{% extends 'base.html.twig' %}
+{% block  stylesheets  %}
+
+    <link href="{{ asset('/theme/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('/theme/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
+
+    <link href="{{ asset('/theme/css/plugins/datapicker/datepicker3.css') }}" rel="stylesheet">
+    <link href="{{ asset('/theme/css/plugins/fullcalendar/fullcalendar.css') }}" rel="stylesheet">
+    <link href="{{ asset('/theme/css/plugins/fullcalendar/fullcalendar.print.css') }}" rel='stylesheet' media='print'>
+
+    <link href="{{ asset('/theme/css/animate.css') }}" rel="stylesheet">
+    <link href="{{ asset('/theme/css/style.css') }}" rel="stylesheet">
+
+{% endblock stylesheets %}
+{% block body %}
+<div id="wrapper">
+
+
+
+        <div class="wrapper wrapper-content">
+            <div class="row animated fadeInDown">
+                <div class="col-lg-3">
+                    <div class="ibox ">
+                        <div class="ibox-title">
+                            <h5>Draggable Events</h5>
+                            <div class="ibox-tools">
+                                <a class="collapse-link">
+                                    <i class="fa fa-chevron-up"></i>
+                                </a>
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                    <i class="fa fa-wrench"></i>
+                                </a>
+                                <ul class="dropdown-menu dropdown-user">
+                                    <li><a href="#" class="dropdown-item">Config option 1</a>
+                                    </li>
+                                    <li><a href="#" class="dropdown-item">Config option 2</a>
+                                    </li>
+                                </ul>
+                                <a class="close-link">
+                                    <i class="fa fa-times"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="ibox-content">
+                            <div id='external-events'>
+                                <p>Drag a event and drop into callendar.</p>
+
+                                {% for c in listevent %}
+                                    <div class='external-event navy-bg'>{{ c.titre }}.</div>
+                                {% endfor %}
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-lg-9">
+                    <div class="ibox ">
+                        <div class="ibox-title">
+                            <h5>Striped Table </h5>
+                            <div class="ibox-tools">
+                                <a class="collapse-link">
+                                    <i class="fa fa-chevron-up"></i>
+                                </a>
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                    <i class="fa fa-wrench"></i>
+                                </a>
+                                <ul class="dropdown-menu dropdown-user">
+                                    <li><a href="#" class="dropdown-item">Config option 1</a>
+                                    </li>
+                                    <li><a href="#" class="dropdown-item">Config option 2</a>
+                                    </li>
+                                </ul>
+                                <a class="close-link">
+                                    <i class="fa fa-times"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="ibox-content">
+                            <div id="calendar"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+{% endblock %}
+
+{% block javascripts %}
+    {# {{ encore_entry_script_tags('app') }} #}
+
+    <script src="{{ asset('/theme/js/jquery-3.1.1.min.js') }}"></script>
+    <script src="{{ asset('/theme/js/popper.min.js') }}"></script>
+    <script src="{{ asset('/theme/js/bootstrap.js') }}"></script>
+    <script src="{{ asset('/theme/js/plugins/metisMenu/jquery.metisMenu.js') }}"></script>
+    <script src="{{ asset('/theme/js/plugins/slimscroll/jquery.slimscroll.min.js') }}"></script>
+    <script src="{{ asset('js/plugins/datapicker/bootstrap-datepicker.js') }}"></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="{{ asset('/theme/js/inspinia.js') }}"></script>
+    <script src="{{ asset('/theme/js/plugins/pace/pace.min.js') }}"></script>
+    <!-- Custom and plugin javascript -->
+    <script src="{{ asset('/theme/js/inspinia.js') }}"></script>
+    <script src="{{ asset('/theme/js/plugins/pace/pace.min.js') }}"></script>
+    <!-- FooTable -->
+    <script src="{{ asset('/theme/js/plugins/footable/footable.all.min.js') }}"></script>
+    <!-- Data picker -->
+    <script src="{{ asset('/theme/js/plugins/datapicker/bootstrap-datepicker.js') }}"></script>
+    <!-- slick carousel-->
+    <script src="{{ asset('/theme/js/plugins/slick/slick.min.js') }}"></script>
+    <!-- Sweet alert -->
+    <script src="{{ asset('/theme/js/plugins/sweetalert/sweetalert.min.js') }}"></script>
+    <!--script for calendar -->
+    <script src="{{ asset('/theme/js/plugins/fullcalendar/moment.min.js') }}"></script>
+    <!-- jQuery UI  -->
+    <script src="{{ asset('/theme/js/plugins/jquery-ui/jquery-ui.min.js') }}"></script>
+
+    <!-- iCheck -->
+    <script src="{{ asset('/theme/js/plugins/iCheck/icheck.min.js') }}"></script>
+
+    <!-- Full Calendar -->
+    <script src="{{ asset('/theme/js/plugins/fullcalendar/fullcalendar.min.js') }}"></script>
+
+
+
+    <script>
+
+        $(document).ready(function() {
+
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green'
+            });
+
+            /* initialize the external events
+             -----------------------------------------------------------------*/
+
+
+            $('#external-events div.external-event').each(function() {
+
+                // store data so the calendar knows to render an event upon drop
+                $(this).data('event', {
+                    title: $.trim($(this).text()), // use the element's text as the event title
+                    stick: true // maintain when user navigates (see docs on the renderEvent method)
+                });
+
+                // make the event draggable using jQuery UI
+                $(this).draggable({
+                    zIndex: 1111999,
+                    revert: true,      // will cause the event to go back to its
+                    revertDuration: 0  //  original position after the drag
+                });
+
+            });
+
+
+            /* initialize the calendar
+             -----------------------------------------------------------------*/
+
+
+            $('#calendar').fullCalendar({
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'month,agendaWeek,agendaDay'
+                },
+                editable: true,
+                droppable: true, // this allows things to be dropped onto the calendar
+                isEventResizableFromStart:true,
+
+                drop: function() {
+                    // is the "remove after drop" checkbox checked?
+                    if ($('#drop-remove').is(':checked')) {
+                        // if so, remove the element from the "Draggable Events" list
+                        $(this).remove();
+                    }
+                },
+                events: {{ data|raw }}
+            }
+            /*,
+                $('#calendar').onChange((e)=>{
+                    let url=`/api/${e.event.id}/edit`
+                    let donnees={
+                        "title":e.event.title,
+                        "start":e.event.start,
+                        "end":e.event.end
+                    }
+
+                    let xhr = new XMLHttpRequest
+                    xhr.open("PUT", url)
+                    xhr.send(JSON.stringify(donnees))
+                    console.log(donnees)
+
+                })*/
+            )
+
+
+
+        })
+
+    </script>
+{% endblock %}

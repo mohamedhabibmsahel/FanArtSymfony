@@ -1,0 +1,58 @@
+{% extends 'blank.html.twig' %}
+
+{% block title %}Création de compte{% endblock %}
+
+{% block body %}
+    {% for flashError in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+    {% endfor %}
+
+<body class="gray-bg">
+<div class="middle-box text-center loginscreen   animated fadeInDown">
+
+
+    <h5>BrainStorm</h5>
+    <img src="{{ asset('http://localhost:8080/img/Brainstorm.png') }}"  width="128" alt="Image">
+
+    <h4>Créez un nouveau compte</h4>
+
+    {{ form_start(registrationForm,{'attr': {'novalidate': 'novalidate'}}) }}
+    {{ form_errors(registrationForm) }}
+
+    {{ form_row(registrationForm.nom) }}
+    {{ form_row(registrationForm.prenom) }}
+    {{ form_row(registrationForm.email) }}
+    {{ form_row(registrationForm.mdp) }}
+    {{ form_row(registrationForm.numtel) }}
+    {{ form_row(registrationForm.photo) }}
+    {{ form_row(registrationForm.type) }}
+    {{ form_row(registrationForm.captchaCode) }}
+    {#<button class="btn btn-primary block full-width m-b" onclick="location.href='{{ path }}'">{{ button_label|default('Créer Compte') }}</button>#}
+    {{ form_end(registrationForm) }}
+
+        <button hidden type="submit" class="btn">Register</button>
+    <p class="text-muted text-center"><small>Vous avez déja un compte ?</small></p>
+    <a class="btn btn-primary block full-width m-b" href="{{ path('app_login') }}">Se connecter</a>
+
+</div>
+
+</body>
+
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#blah').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#imgInp").change(function(){
+            readURL(this);
+        });
+    </script>
+{% endblock %}

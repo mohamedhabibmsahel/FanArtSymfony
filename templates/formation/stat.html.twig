@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+    Les statistiques
+{% endblock %}
+{% block body  %}
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="row">
+                {% set total= salle|length + formation|length %}
+                {% set tot= (salle|length + formation|length )*10 %}
+
+                {% set sallestat= ( salle|length *100 )/ total %}
+                {% set formationstat= ( formation|length *100 )/ total %}
+
+                <div class="col-lg-6">
+                    <div class="ibox"></div>
+                    <div class="ibox-content" style="">
+                        <div class="flot-chart">
+                            <div class="flot-chart-content" id=flot-line-chart" style="padding: 0px; position: relative;">
+
+                                <canvas class="flot-base" width="925" height="300" style="direction: ltr;
+                                position: absolute; left: 0px; top: 0px; width: 616.667px; height: 200px;"></canvas>
+
+                                <div class="flot-text" style="position: absolute; inset: 0px; font-size: smaller; color: rgb(84, 84, 84);">
+                                    <div class="legend">
+                                    <div class="flot-x-axis flot-x1-axis xAxis x1Axis" style="position: absolute; inset: 0px;">
+                                        <div class="flot-tick-label tickLabel" style="position: absolute; max-width: 62px; top: 184px; left: 15px; text-align: center;">salle {{ sallestat }}%</div>
+                                        <div class="flot-tick-label tickLabel" style="position: absolute; max-width: 62px; top: 184px; left: 120px; text-align: center;">formation {{ formationstat }}%</div>
+                                    </div>
+                                    <div class="flot-y-axis flot-y1-axis yAxis y1Axis" style="position: absolute; inset: 0px;">
+                                        <div class="flot-tick-label tickLabel" style="position: absolute; top: 171px; left: 6px; text-align: right;">20%</div>
+                                        <div class="flot-tick-label tickLabel" style="
+                                        position: absolute; top: 137px; left: 0px; text-align: right;">40%</div>
+                                        <div class="flot-tick-label tickLabel" style="position: absolute; top: 103px; left: 0px; text-align: right;">60%</div>
+                                        <div class="flot-tick-label tickLabel" style="position: absolute; top: 68px; left: 0px; text-align: right;">80%</div>
+                                        <div class="flot-tick-label tickLabel" style="position: absolute; top: 34px; left: 0px; text-align: right;">100%</div>
+                                    </div>
+                                </div>
+
+                                <canvas class="flot-overlay" width="925" height="300" style="direction: ltr; position: absolute;
+                                left: 0px; top: 0px; width: 616.667px; height: 200px;"></canvas></div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </section>
+    </section>
+{% endblock %}
